@@ -1,0 +1,6 @@
+framework module AWHBoneRuntime {
+  umbrella header "AWHBoneRuntime.h"
+
+  export *
+  module * { export * }
+}
