@@ -14,6 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AWHBRTools : NSObject
 
+// dispatch_after取消操作
+typedef void(^AWHBRDelayedBlockHandle)(BOOL cancel);
+AWHBRDelayedBlockHandle awhbr_perform_block_after_delay(CGFloat seconds, dispatch_block_t block);
+void awhbr_cancel_delayed_block(AWHBRDelayedBlockHandle delayedHandle);
+
+
 /**
  *  app上边距status值
  */
@@ -43,6 +49,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)nowDate:(NSString *)str andDayNumber:(int)hours andFormatter:(NSString *)formatter;
 //当前凌晨时间
 + (NSString *)getThatDayEarlyMorningFormatter:(NSString *)formatter;
+//当前距离某时间的时间戳时间 yyMMddHHmmss
++ (NSString *)getEndTimeWithStartTime:(NSString *)startTime timeDifference:(NSInteger)timeDifference;
 //获取传入的时间的时间戳的日期
 + (NSString *)getDateStringWith:(NSString *)dateString andFormatter:(NSString *)formatter;
 // MD5加密 16位 小写
@@ -138,8 +146,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)checkIncludeEmoticons:(NSString *)str;
 //秒转化为时分秒
 + (NSString *)stringHourWithSecond:(NSInteger)second;
+//秒转化为分秒
++ (NSString *)stringMinWithSecond:(NSInteger)second;
 //秒转化为天时分秒
 + (NSString *)stringDayHourWithSecond:(NSInteger)second;
+//秒转化为时分秒 最少有分
++ (NSString *)stringTwoHourWithSecond:(NSInteger)second;
 //身份证正则
 +(BOOL)validateIDCardNumber:(NSString *)value;
 //匹配数字 字母 汉字
