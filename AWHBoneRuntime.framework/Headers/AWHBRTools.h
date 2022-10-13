@@ -158,6 +158,7 @@ void awhbr_cancel_delayed_block(AWHBRDelayedBlockHandle delayedHandle);
 +(BOOL)checkName:(NSString *)str;
 +(BOOL)judgeNum:(NSString *)pass;
 +(BOOL)judgeplate:(NSString *)pass;
++ (UIWindow *)getKeyWindow;
 
 + (UIWindow *)frontWindow;
 

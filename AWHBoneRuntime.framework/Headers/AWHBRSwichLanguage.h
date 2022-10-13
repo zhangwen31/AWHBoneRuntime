@@ -11,12 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AWHBRSwichLanguage : NSObject
 
++(void)setupBundleClass:(NSString *)bundleClass resourceName:(NSString *)resourceName;//初始化语言文件
+
 +(NSBundle *)bundle;//获取当前资源文件
 
-
-
-+(void)initUserLanguage;//初始化语言文件
-
++(void)initUserLanguage;
 
 
 +(NSString *)userLanguage;//获取应用当前语言

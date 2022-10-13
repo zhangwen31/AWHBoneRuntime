@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AWHBRProtocol.h"
+#import <AWHBoneRuntime/AWHBRProtocol.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
