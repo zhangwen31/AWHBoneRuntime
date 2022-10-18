@@ -77,11 +77,9 @@ space = par;\
 (space);\
 })
 
-#define AWHBR_KEY_WINDOW [UIApplication sharedApplication].keyWindow
-#define AWHBR_DELEGATE_WINDOW [UIApplication sharedApplication].delegate.window
-#define AWHBR_TOP_SPACE IOS11_OR_LATER_SPACE(AWHBR_DELEGATE_WINDOW.safeAreaInsets.top) //上边距status值
-#define AWHBR_TOP_ACTIVE_SPACE IOS11_OR_LATER_SPACE(MAX(0, AWHBR_DELEGATE_WINDOW.safeAreaInsets.top-20))  //与其他上边距status差值
-#define AWHBR_BOTTOM_SPACE IOS11_OR_LATER_SPACE(AWHBR_DELEGATE_WINDOW.safeAreaInsets.bottom) //下边距值
+#define AWHBR_TOP_SPACE [AWHBRTools getAppTopSpace] //上边距status值
+#define AWHBR_TOP_ACTIVE_SPACE [AWHBRTools getAppTopActiveSpace]  //与其他上边距status差值
+#define AWHBR_BOTTOM_SPACE [AWHBRTools getAppTopBottomSpace] //下边距值
 //Bundle Id
 #define BID [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"]
 //手机版本
