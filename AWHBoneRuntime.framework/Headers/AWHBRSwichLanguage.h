@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSBundle *)bundle;//获取当前资源文件
 
 +(void)initUserLanguage;
+/**
+ * 设置默认语言 不设置默认中文
+ */
++ (void)setupDefaultLanguage:(NSString *)language;
 
 
 +(NSString *)userLanguage;//获取应用当前语言
