@@ -183,6 +183,10 @@ void awhbr_cancel_delayed_block(AWHBRDelayedBlockHandle delayedHandle);
 
 + (UIViewController *)getCurrentVC;
 
++ (NSString *)getAppName;
+
++ (NSString *)getBundleIdentifier;
+
 
 @end
 
