@@ -42,3 +42,5 @@ FOUNDATION_EXPORT const unsigned char AWHBoneRuntimeVersionString[];
 #import <AWHBoneRuntime/UIImage+Tool.h>
 #import <AWHBoneRuntime/UIImage+AWHBR.h>
 #import <AWHBoneRuntime/AWHBRWeakTimer.h>
+#import <AWHBoneRuntime/AWHBRFQPhotoAlbum.h>
+#import <AWHBoneRuntime/NSDictionary+AWHBR.h>

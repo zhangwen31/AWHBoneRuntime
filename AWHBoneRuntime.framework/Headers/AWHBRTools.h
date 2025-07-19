@@ -37,22 +37,50 @@ void awhbr_cancel_delayed_block(AWHBRDelayedBlockHandle delayedHandle);
 
 //当前时间，时间戳
 + (NSString *)GetNowTimes;
+
+/**
+ *  APP是否首次登录
+ */
++ (BOOL)getAppFirstLogin;
+/**
+ *  设置APP首次登录
+ */
++ (void)setupAppFirstLogin;
+/**
+ *  APP登录状态
+ */
++ (BOOL)isLoginSuccess;
+/**
+ *  设置APP登录状态
+ */
++ (void)setupAppIsLogin:(BOOL)isLogin;
+
 //将某个时间转化成 时间戳
 +(NSInteger)timeSwitchTimestamp:(NSString *)formatTime andFormatter:(NSString *)format;
 // 判断时间段
 + (BOOL)date:(NSDate*)date isBetweenDate:(NSDate*)beginDate andDate:(NSDate*)endDate;
 //日期转字符串
 + (NSString *)stringWithDate:(NSDate *)date;
+//日期转字符串
++ (NSString *)stringWithDate:(NSDate *)date formatter:(NSString *)formatter;
 //当前时间
 + (NSString *)nowDateFormatter:(NSString *)formatter;
+//字符串转时间
++ (NSDate *)getDateWithTimeStr:(NSString *)timeStr formatter:(NSString *)formatter;
 //当前时间前的时间
 + (NSString *)nowDate:(NSString *)str andDayNumber:(int)hours andFormatter:(NSString *)formatter;
 //当前凌晨时间
 + (NSString *)getThatDayEarlyMorningFormatter:(NSString *)formatter;
+//将某个时间转化成 时间戳 当天最小时间戳 凌晨 00:00:00
++(NSInteger)timeDayEarlyMorningSwitchTimestamp:(NSString *)formatTime;
+//将某个时间转化成 时间戳 当天最大时间戳 凌晨前一秒 23:59:59
++(NSInteger)timeDayMaxSwitchTimestamp:(NSString *)formatTime;
 //当前距离某时间的时间戳时间 yyMMddHHmmss
 + (NSString *)getEndTimeWithStartTime:(NSString *)startTime timeDifference:(NSInteger)timeDifference;
 //获取传入的时间的时间戳的日期
 + (NSString *)getDateStringWith:(NSString *)dateString andFormatter:(NSString *)formatter;
+// 计算两个日期之间的天数差
++ (NSInteger)daysBetweenDate:(NSDate *)startDate andDate:(NSDate *)endDate;
 // MD5加密 16位 小写
 +(NSString *)MD5ForLower32Bate:(NSString *)str;
 //获取uuid
@@ -67,7 +95,7 @@ void awhbr_cancel_delayed_block(AWHBRDelayedBlockHandle delayedHandle);
 //传入 分钟  得到 xx:xx:xx
 + (NSString *)getMMSSFRomSS:(NSString *)time;
 // 字典转json字符串方法
-+(NSString *)convertToJsonData:(NSDictionary *)dict;
++(NSString *)convertToJsonData:(id)dict;
 //当时时间到本周末的时间返回天数
 +(NSInteger)endOfTheWeek;
 //获取当前时间到当月底的天数
@@ -79,6 +107,10 @@ void awhbr_cancel_delayed_block(AWHBRDelayedBlockHandle delayedHandle);
 //获取当前和当前n天后的日期 yyyyMMdd
 +(NSString *)getNumberDay:(NSInteger)n;
 +(NSString *)getNDayMM:(NSInteger)n;
+/// 获取当天的年月日
++ (NSString *)getCurretYearToDay;
+/// 获取第二年 年月日
++ (NSString *)getSecondYearToDay;
 //关闭系统
 +(void)exitApplication ;
 + (NSString *)getDHMSFromSS:(NSString *)time;
@@ -173,6 +205,14 @@ void awhbr_cancel_delayed_block(AWHBRDelayedBlockHandle delayedHandle);
 
 + (NSString *)getAppVersion;
 /**
+ * 获取云查车当前版本
+ */
++ (NSString *)getSYCurrentVersion;
+/**
+ * 获取VVMS当前版本
+ */
++ (NSString *)getVVMSCurrentVersion;
+/**
  * 随机生成UUID
  */
 + (NSString *)uuidString;
@@ -187,6 +227,80 @@ void awhbr_cancel_delayed_block(AWHBRDelayedBlockHandle delayedHandle);
 
 + (NSString *)getBundleIdentifier;
 
+/// 不需要初始化iv的DES加密。（ECB模式）
++ (NSString *)encodeDesECBWithString:(NSString*)stringECB;
+
+//KEY#:ZW0cJqHs7G5Y9Nw05kXFSUz7+zBqobko
+/// 不需要初始化iv的DES解密。（ECB模式）
++ (NSString*)decodeDesECBWithString:(NSString *)stringECB;
+//温度转换 当前是℃  根据传入单位 转换℉
++ (NSString *)getCurretTemperature:(NSString *)temperature temperatureUnit:(NSString *)temperatureUnit;
+/**
+ * 压力转换 当前是Kpa  根据传入单位 转换Psi kg/cm2 bar
+ * @param pressure 压力 单位Kpa
+ * @param pressureUnit 压力单位
+ * @param interval 数字与单元之间的间隔
+ */
++ (NSString *)getCurretPressure:(NSString *)pressure
+                   pressureUnit:(NSString *)pressureUnit
+                    intervalStr:(NSString *)interval;
+
+//交换方法 实例方法交换
++ (void)methodInstanceSwizzlingWithClass:(Class)cls oriSEL:(SEL)oriSEL swizzledSEL:(SEL)swizzledSEL;
+//交换方法 类方法交换
++ (void)methodClassSwizzlingWithClass:(Class)cls oriSEL:(SEL)oriSEL swizzledSEL:(SEL)swizzledSEL;
+//交换方法 实例方法交换
++ (void)methodInstanceSwizzlingWithClass:(Class)cls oriSEL:(SEL)oriSEL swizzledClass:(Class)swizzledClass swizzledSEL:(SEL)swizzledSEL;
+//交换方法 类方法交换
++ (void)methodClassSwizzlingWithClass:(Class)cls oriSEL:(SEL)oriSEL swizzledClass:(Class)swizzledClass swizzledSEL:(SEL)swizzledSEL;
+
+/**
+ @brief 替换类的类方法
+ @param cls 要修改的类的类对象
+ @param originalSelector 要替换的方法
+ @param swizzledSelector 新的方法实现
+ */
+extern void AWHBRSwizzleClassMethod(Class cls, SEL originalSelector, SEL swizzledSelector);
+
+/**
+ @brief 替换类的对象方法
+ @param cls 要修改的类的类对象
+ @param originalSelector 要替换的方法
+ @param swizzledSelector 新的方法实现
+ */
+extern void AWHBRSwizzleInstanceMethod(Class cls, SEL originalSelector, SEL swizzledSelector);
+
+/**
+@brief 交换不同类中两个  对象方法    友好提示:自定义的方法可以写在任何的自定义类中 ）
+@param originalCls 被交换的类的类对象
+@param swizzledCls 用来交换的类的类对象
+@param originalSelector 被交换的方法
+@param swizzledSelector 用来交换的方法
+  */
+extern void AWHBRSwizzleDifferentClassInstanceMethod(Class originalCls,Class swizzledCls,SEL originalSelector, SEL swizzledSelector);
+
+
+/**
+@brief 交换不同类中两个  类方法 （  友好提示:自定义的方法可以写在任何的自定义类中 ）
+@param originalCls 被交换的类的类对象
+@param swizzledCls 用来交换的类的类对象
+@param originalSelector 被交换的方法
+@param swizzledSelector 用来交换的方法
+  */
+extern void AWHBRSwizzleDifferentClassClassMethod(Class originalCls,Class swizzledCls,SEL originalSelector, SEL swizzledSelector);
+
+
++ (NSDateFormatter *)dateFormatter;
+/**
+ * 时间格式转换
+ * @param formatter 新的格式
+ * @param dateStr 需要转换的时间
+ * @param oldFormatter 旧的格式
+ */
++ (NSString *)getDateStrWithFormatter:(NSString *)formatter oldDateStr:(NSString *)dateStr oldFormatter:(NSString *)oldFormatter;
+
+/// 计算圆中心点和车辆坐标点的距离
++(double)distanceBetweenOrderByStartLat:(double)startLat startLag:(double)startLag endLat:(double)endLat endLag:(double)endLag;
 
 @end
 

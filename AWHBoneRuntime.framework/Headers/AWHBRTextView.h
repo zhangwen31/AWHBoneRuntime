@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *placeholder;
 @property (nonatomic, strong) UIColor *placeholderColor;
+@property (nonatomic, copy) UIFont *placeholderFont;
+@property (nonatomic, copy) void (^changeTextView)(UITextView *textView);
+@property (nonatomic, copy) void (^changeFinishTextView)(UITextView *textView);
 
 @end
 

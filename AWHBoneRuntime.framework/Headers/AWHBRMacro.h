@@ -54,8 +54,28 @@
 
 #define kWeakSelf(weakSelf)  __weak __typeof(&*self) weakSelf  = self;
 #define kStrongSelf(strongSelf)  __strong __typeof(&*self) strongSelf  = weakSelf;
-#define kScreenW   ([UIScreen mainScreen].bounds.size.width)
-#define kScreenH   ([UIScreen mainScreen].bounds.size.height)
+#define kScreenW   ([AWHBRSizeHelper screenWidth])
+#define kScreenH   ([AWHBRSizeHelper screenHeight])
+#define kThemeColorStr   @"2461F7"
+#define kTheme2ColorStr   @"3493E9"
+#define kTitleColorStr   @"333333"
+#define kSubTitleColorStr   @"666666"
+#define kSubTitle9ColorStr   @"999999"
+#define kDetailColorStr   @"C2C2C2"
+#define kLineColorStr   @"E5E5E5"
+#define kLine8ColorStr   @"E8E8E8"
+#define kLine12ColorStr   @"CCCCCC"
+#define kBackgroundColorStr   @"F5F5F5"
+#define kBackground2ColorStr   @"F6F6F6"
+#define kBackground3ColorStr   @"DDDDDD"
+#define kBlackdColorStr   @"000000"
+#define kWhiteColorStr   @"FFFFFF"
+#define kAshenColorStr   @"BDDFFF"
+#define kRedColorStr   @"FF0000"
+#define kShadowColorStr   @"505257"
+#define kPlaceHolderColorStr   @"B0B0B0"
+#define kNavLowColorStr   @"001FF7"
+#define kNavHigColorStr   @"0054F7"
 //判断是否是刘海屏
 #define kIsBangsScreen ({\
     BOOL isBangsScreen = NO; \

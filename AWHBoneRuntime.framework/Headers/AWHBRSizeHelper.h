@@ -7,15 +7,24 @@
 
 #import <UIKit/UIKit.h>
 
-#define scaleFrom720(x) (x)/(360.0/[[UIScreen mainScreen] bounds].size.width)
-#define scaleFrom750(x) (x)/(750.0/[[UIScreen mainScreen] bounds].size.width)
-#define scaleFrom375(x) (x)/(375.0/[[UIScreen mainScreen] bounds].size.width)
+#define scaleFrom720(x) [AWHBRSizeHelper getWidthScreenScale360:(x)]
+#define scaleFrom750(x) [AWHBRSizeHelper getWidthScreenScale750:(x)]
+#define scaleFrom375(x) [AWHBRSizeHelper getWidthScreenScale375:(x)]
 #define scaleForText750(x) ([AWHBRSizeHelper get_FontSize:x])
 #define scaleForText720(x) ([AWHBRSizeHelper getFontSize:x])
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AWHBRSizeHelper : NSObject
+
++ (CGFloat)screenWidth;
++ (CGFloat)screenHeight;
++ (CGFloat)screenScale375;
++ (CGFloat)screenScale750;
++ (CGFloat)screenScale360;
++ (CGFloat)getWidthScreenScale375:(CGFloat)width;
++ (CGFloat)getWidthScreenScale750:(CGFloat)width;
++ (CGFloat)getWidthScreenScale360:(CGFloat)width;
 
 //+(CGFloat) mega;   //48
 +(CGFloat) header; //40

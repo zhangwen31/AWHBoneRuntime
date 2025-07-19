@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSDate*)GetDateFromDateTimeString:(NSString*)dateTimeString;
 
++ (NSDate*)GetDateFromDateTimeSecondString:(NSString*)dateTimeString;
+
 + (NSDate*)GetDateFromService:(NSString*)serviceDate;
 
 + (NSDate*)GetDateFromDateString:(NSString*)serviceDate;

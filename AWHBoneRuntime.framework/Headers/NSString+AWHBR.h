@@ -44,6 +44,14 @@ NS_ASSUME_NONNULL_BEGIN
  @return YES: 是  NO：不是
  */
 - (BOOL)isMobilePhone;
+/**
+ * 是否是数字
+ */
+- (BOOL)isNum;
+/**
+ * 是否是数字 先去掉字符串中 “-”
+ */
+- (BOOL)isNumRemoveRow;
 
 
 /**
@@ -110,6 +118,34 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isBlank_awhbr:(NSString*)source;
 //是否为空  不包括空格
 + (BOOL)isEmpty_awhbr:(NSString*)source;
+//获取字符串字节数
+- (NSUInteger)charactorNumber;
+//从字典安全出去字符串 如果是NSNumber类型转换成字符串
++ (NSString *)getSafeStringWithDictionary:(NSDictionary *)dict key:(NSString *)key;
+/**
+ * 从字典安全出去字符串 如果是NSNumber类型转换成字符串 四舍五入
+ * @param dict 字段
+ * @param key 标识key
+ * @param decimalPointNum 小数点后几位
+ */
++ (NSString *)getSafeStringHalfAdjustWithDictionary:(NSDictionary *)dict
+                                                key:(NSString *)key
+                                    decimalPointNum:(NSInteger)decimalPointNum;
+/**
+ * 转换成字符串 四舍五入
+ * @param value 值 可以是字符串或者NSNumber
+ * @param decimalPointNum 小数点后几位
+ */
++ (NSString *)getStringHalfAdjustWithValue:(id)value
+                           decimalPointNum:(NSInteger)decimalPointNum;
+
+/**
+ * 转换成字符串 四舍五入
+ * @param value 值 浮点数
+ * @param decimalPointNum 小数点后几位
+ */
++ (NSString *)getStringHalfAdjustWithFloatValue:(CGFloat)value
+                                decimalPointNum:(NSInteger)decimalPointNum;
 
 @end
 

@@ -43,4 +43,7 @@
 
 ///压缩到100k以内
 -(NSData *)imageCompressToData;
+/** 将图片旋转degrees角度 */
+- (UIImage *)rotateImageByDegrees:(CGFloat)degrees;
+
 @end
