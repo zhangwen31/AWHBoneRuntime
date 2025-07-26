@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "AWHBoneRuntime"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "A short description of AWHBoneRuntime."
 
   # This description is used to generate tags and improve search results.
@@ -69,9 +69,9 @@ Pod::Spec.new do |s|
   #  #配置文件URL
   #
 
-  s.author             = { "王恒" => "1066026709@qq.com" }
+  s.author             = { "王恒" => "z.wen84@foxmail.com" }
   # Or just: s.author    = "王恒"
-  # s.authors            = { "王恒" => "1066026709@qq.com" }
+  # s.authors            = { "王恒" => "z.wen84@foxmail.com" }
   s.social_media_url   = "https://github.com/zhangwen31/AWHBoneRuntime.git"
 
   # ――― Platform sifics 平台sifics――――――――――――――――――――――――――――――――――――――――― #
