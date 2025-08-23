@@ -227,6 +227,9 @@ void awhbr_cancel_delayed_block(AWHBRDelayedBlockHandle delayedHandle);
 
 + (NSString *)getBundleIdentifier;
 
+/// 是否是SDK功能
++ (BOOL)isSDKFunction;
+
 /// 不需要初始化iv的DES加密。（ECB模式）
 + (NSString *)encodeDesECBWithString:(NSString*)stringECB;
 
